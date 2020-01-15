@@ -1,0 +1,3 @@
+com\fuceng\mapper\OrderMapper.class
+com\fuceng\mapper\UserMapper.class
+com\fuceng\service\impl\UserServiceImpl.class

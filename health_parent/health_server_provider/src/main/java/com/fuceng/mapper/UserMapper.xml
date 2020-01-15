@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fuceng.mapper.UserMapper">
+	
+	<select id="getCount" resultType="int" >
+		select count(*) from t_user
+	</select>
+	
+	<select id="findAllUserPage" resultMap="com.fuceng.Bean.User">
+		select * from t_user limit #{startIndex},#{pageSize}
+	</select>
+	
+</mapper>
