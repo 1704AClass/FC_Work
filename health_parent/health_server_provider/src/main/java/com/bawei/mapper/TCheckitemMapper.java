@@ -1,17 +1,11 @@
-package com.fuceng.mapper;
+package com.bawei.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.*;
 
 import com.fuceng.Bean.CheckItem;
 
-@Repository
 public interface TCheckitemMapper {
 
 	@Select("select count(*) from t_checkitem")
@@ -28,6 +22,15 @@ public interface TCheckitemMapper {
 
 	@Update("update t_checkitem code = #{code},name=#{name},sex=#{sex},age=#{age},price=#{price},type=#{type},attention=#{attention},remark=#{remark} where id =#{id}")
 	void update(CheckItem checkItem);
+
+	@Select("select count(*) from t_checkitem where id = #{id}")
+	Long findCountByCheckItemId(@Param("id")Integer id);
+
+	@Select("select * from t_checkitem where id = #{id}")
+	CheckItem findById(@Param("id")Integer id);
+
+	@Select("select * from t_checkitem")
+	List<CheckItem> findAll();
 	
 	
 }

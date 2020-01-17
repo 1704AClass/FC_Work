@@ -22,4 +22,8 @@ public interface CheckItemService {
 
 	void update(CheckItem checkItem);
 
+	CheckItem findById(Integer id);
+
+	List<CheckItem> findAll();
+
 }

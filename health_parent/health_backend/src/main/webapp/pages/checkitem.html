@@ -216,7 +216,7 @@
 					  total:10,//总记录数
 					  queryString:null//查询条件
 				},
-				dataList: [{id:'1',code:'20'}],//当前页要展示的分页列表数据
+				dataList: [],//当前页要展示的分页列表数据
                 formData: {},//表单数据
                 dialogFormVisible: false,//增加表单是否可见
                 dialogFormVisible4Edit:false,//编辑表单是否可见
@@ -227,7 +227,7 @@
             },
             //钩子函数，VUE对象初始化完成后自动执行
             created() {
-            	this.findPage(this.pagination.currentPage,this.pagination.pageSize);
+            	this.findPage();
             },
             methods: {
                 //编辑
@@ -235,15 +235,21 @@
                 	this.$refs['dataEditForm'].validate((valid) =>{
                 		if(valid){
                 			console.log(this.formData);
-                			axios.post("http://localhost:9101/checkitem/update.do",this.formData).then(function(req){
+                			axios.post("/checkitem/update.do",this.formData).then(function(req){
                 				this.dialogFormVisible4Edit = false;
                 				if(req.data.flag){
-                					this.findPage();
                 					this.$message.success(req.data.message);
                 				}else{
                 					this.$message.error(req.data.message);
                 				}
+                			}).finally(()=>{
+                				//重新发送请求查询分页数据
+               					this.findPage();
                 			});
+                		}else{
+                			//表单效验失败
+                			this.$message.error("表单数据效验失败");
+                			return false;
                 		}
                 	})
                 },
@@ -252,7 +258,7 @@
                 	this.$refs['dataAddForm'].validate((valid) =>{
                 		if(valid){
                 			console.log(this.formData);
-                			axios.post("http://localhost:9101/checkitem/add.do",this.formData).then(function(req){
+                			axios.post("/checkitem/add.do",this.formData).then(function(req){
                 				this.dialogFormVisible = false;
                 				if(req.data.flag){
                 					this.findPage();
@@ -260,7 +266,12 @@
                 				}else{
                 					this.$message.error(req.data.message);
                 				}
+                			}).finally(()=>{
+                				this.findPage();
                 			});
+                		}else{
+                			this.$message.error("表单数据效验失败");
+                			return false;
                 		}
                 	})
                 },
@@ -271,7 +282,7 @@
                 		pageSize:this.pagination.pageSize,
 	  					queryString:this.pagination.queryString
                 	}
-                	axios.post("http://localhost:9101/checkitem/findPage.do",param).then((req) =>{
+                	axios.post("/checkitem/findPage.do",param).then((req) =>{
                 		console.log(req.data);
                 		this.dataList = req.data.rows;
                 		this.pagination.total = req.data.total;
@@ -288,8 +299,16 @@
                 },
                 // 弹出编辑窗口
                 handleUpdate(row) {
-                	this.dialogFormVisible4Edit = true;
-                	this.formData = row;
+                	//发送请求获取检查项信息
+                	axios.get("/checkitem/findById?id="+row.id).then((req) => {
+                		if(req.data.flag){
+		                	this.dialogFormVisible4Edit = true;
+                			this.formData = req.data.data;
+                		}else{
+                			this.$message.error("获取数据失败，请刷新当前页面");
+                		}
+                	});
+                	
                 },
                 //切换页码
                 handleCurrentChange(currentPage) {
@@ -298,9 +317,18 @@
                 },
                 // 删除
                 handleDelete(row) {
-                	console.log(row);
-                	axios.post("http://localhost:9101/checkitem/delete.do?id="+row.id).then((req) =>{
-                		this.findPage();
+                	this.$confirm("确认删除当前选中记录吗？","提示",{type:'warning'}).then(()=>{
+	                	console.log(row);
+	                	axios.post("/checkitem/delete.do?id="+row.id).then((req) =>{
+	                		if(!req.data.flag){
+	                			//删除失败
+	                			this.$message.error(req.data.message);
+	                		}else{
+	                			//删除成功
+	                			this.$message.success(req.data.message);
+		                		this.findPage();
+	                		}
+	                	});
                 	});
                 }
             }

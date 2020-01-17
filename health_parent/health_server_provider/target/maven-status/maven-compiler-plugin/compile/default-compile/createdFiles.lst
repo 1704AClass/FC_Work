@@ -1,3 +1,4 @@
-com\fuceng\mapper\TCheckitemMapper.class
-com\fuceng\mapper\TUserMapper.class
+com\fuceng\service\impl\CheckGroupServiceImpl.class
+com\bawei\mapper\TCheckitemMapper.class
+com\bawei\mapper\CheckGroupMapper.class
 com\fuceng\service\impl\CheckItemServiceImpl.class

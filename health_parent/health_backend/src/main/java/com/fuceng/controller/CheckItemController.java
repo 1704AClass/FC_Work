@@ -47,6 +47,16 @@ public class CheckItemController {
 		return map;
 	}
 
+	@RequestMapping("/findAll")
+	@ResponseBody
+	public Result findAll(){
+		List<CheckItem> checkItemList = checkItemService.findAll();
+		if(checkItemList != null && checkItemList.size() > 0) {
+			return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItemList);
+		}
+		return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);
+	}
+
 	@RequestMapping("/add")
 	@ResponseBody
 	public Result add(@RequestBody CheckItem checkItem){
@@ -55,7 +65,7 @@ public class CheckItemController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return new Result(true,MessageConstant.ADD_CHECKITEM_FAIL);
+			return new Result(false,MessageConstant.ADD_CHECKITEM_FAIL);
 		}
 		return new Result(true,MessageConstant.ADD_CHECKITEM_SUCCESS);
 	}
@@ -68,11 +78,24 @@ public class CheckItemController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return new Result(true,MessageConstant.ADD_CHECKITEM_FAIL);
+			return new Result(false,MessageConstant.EDIT_CHECKITEM_FAIL);
 		}
-		return new Result(true,MessageConstant.ADD_CHECKITEM_SUCCESS);
+		return new Result(true,MessageConstant.EDIT_CHECKITEM_SUCCESS);
 	}
 
+	@RequestMapping("/findById")
+	@ResponseBody
+	public Result findById(Integer id){
+		try {
+			CheckItem item = checkItemService.findById(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);
+		}
+		return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS);
+	}
+	
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Result delete(Integer id){
@@ -81,7 +104,7 @@ public class CheckItemController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return new Result(true,MessageConstant.DELETE_CHECKITEM_FAIL);
+			return new Result(false,MessageConstant.DELETE_CHECKITEM_FAIL);
 		}
 		return new Result(true,MessageConstant.DELETE_CHECKITEM_SUCCESS);
 	}
@@ -95,7 +118,7 @@ public class CheckItemController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return new Result(true,MessageConstant.DELETE_CHECKITEM_FAIL);
+			return new Result(false,MessageConstant.DELETE_CHECKITEM_FAIL);
 		}
 		return new Result(true,MessageConstant.DELETE_CHECKITEM_SUCCESS);
 	}

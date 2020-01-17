@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bawei.mapper.CheckGroupMapper">
+	
+	<insert id="add" parameterType="com.fuceng.Bean.CheckGroup">
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			select LAST_INSERT_ID()
+		</selectKey>
+		insert into t_checkgroup(code,name,sex,helpCode,remark,attention)
+		values
+		(#{code},#{name},#{sex},#{helpCode},#{remark},#{attention})
+	</insert>
+	
+	
+	<!-- 设置检查组和检查项的关联关系 -->
+	<insert id="setCheckGroupAndCheckItem" parameterType="hashmap">
+		insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id)
+		values(#{checkgroup_id},#{checkitem_id})
+	</insert>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from t_checkgroup
+		<where>
+			<if test="code != null and code != ''">
+				code like concat('%',#{queryString},'%')
+			</if>
+			<if test="name != null and name != ''">
+				or name like concat('%',#{queryString},'%')
+			</if>
+			<if test="helpCode != null and helpCode != ''">
+				or helpCode like concat('%',#{queryString},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectByCondition" resultType="com.fuceng.Bean.CheckGroup">
+		select * from t_checkgroup
+		<where>
+			<if test="code != null and code != ''">
+				code like concat('%',#{queryString},'%')
+			</if>
+			<if test="name != null and name != ''">
+				or name like concat('%',#{queryString},'%')
+			</if>
+			<if test="helpCode != null and helpCode != ''">
+				or helpCode like concat('%',#{queryString},'%')
+			</if>
+		</where>
+		limit #{currentPage},#{pageSize}
+	</select>
+	
+	
+	
+</mapper>

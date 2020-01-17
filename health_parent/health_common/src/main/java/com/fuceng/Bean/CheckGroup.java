@@ -79,4 +79,29 @@ public class CheckGroup implements Serializable {
     public void setAttention(String attention) {
         this.attention = attention;
     }
+
+	@Override
+	public String toString() {
+		return "CheckGroup [id=" + id + ", code=" + code + ", name=" + name + ", helpCode=" + helpCode + ", sex=" + sex
+				+ ", remark=" + remark + ", attention=" + attention + ", checkItems=" + checkItems + "]";
+	}
+
+	public CheckGroup() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CheckGroup(Integer id, String code, String name, String helpCode, String sex, String remark,
+			String attention, List<CheckItem> checkItems) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.name = name;
+		this.helpCode = helpCode;
+		this.sex = sex;
+		this.remark = remark;
+		this.attention = attention;
+		this.checkItems = checkItems;
+	}
+    
 }

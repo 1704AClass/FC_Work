@@ -12,6 +12,7 @@
   		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
+			<version>4.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -31,10 +32,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- 连接池 -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-		</dependency>
   	<dependency>
   		<groupId>com.fuceng</groupId>
   		<artifactId>health_interface</artifactId>
