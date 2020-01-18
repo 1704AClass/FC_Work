@@ -81,4 +81,10 @@ public class CheckGroupServiceImpl implements CheckGroupService{
 		checkGroupMapper.delete(id);
 	}
 
+	@Override
+	public List<CheckGroup> findAll() {
+		// TODO Auto-generated method stub
+		return checkGroupMapper.findAll();
+	}
+
 }

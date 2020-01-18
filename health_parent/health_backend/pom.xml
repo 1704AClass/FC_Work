@@ -19,6 +19,15 @@
 	</dependency>
 	<!-- Spring -->
 	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+	</dependency>
+	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-context</artifactId>		
 	</dependency>
@@ -85,14 +94,22 @@
 		<scope>provided</scope>
 	</dependency>  
   	<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
+		<groupId>com.github.pagehelper</groupId>
+		<artifactId>pagehelper</artifactId>
 	</dependency>
 	<dependency>
-			<groupId>com.github.miemiedev</groupId>
-			<artifactId>mybatis-paginator</artifactId>
+		<groupId>com.github.miemiedev</groupId>
+		<artifactId>mybatis-paginator</artifactId>
 	</dependency>
-
+	<!-- 缓存 -->
+		<dependency> 
+		  <groupId>redis.clients</groupId> 
+		  <artifactId>jedis</artifactId> 
+		</dependency> 
+		<dependency> 
+		  <groupId>org.springframework.data</groupId> 
+		  <artifactId>spring-data-redis</artifactId> 
+		</dependency>
   </dependencies>
   <build>
 	 <plugins>

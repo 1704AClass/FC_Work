@@ -1,10 +1,6 @@
 package com.fuceng.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuceng.Bean.CheckGroup;
-import com.fuceng.Bean.CheckItem;
 import com.fuceng.Interface.CheckGroupService;
 import com.fuceng.util.MessageConstant;
 import com.fuceng.util.PageResult;
@@ -45,11 +40,21 @@ public class CheckGroupController {
 	@RequestMapping("/findPage")
 	public PageResult findPage(@RequestBody QueryPageBean pageBean){
 		PageResult pageResult = checkGroupService.pageQuery(
-			pageBean.getCurrentPage(),
-			pageBean.getPageSize(),
-			pageBean.getQueryString()
-		);
+				pageBean.getCurrentPage(),
+				pageBean.getPageSize(),
+				pageBean.getQueryString()
+				);
 		return pageResult;
+	}
+
+	
+	@RequestMapping("/findAll")
+	public Result findAll(){
+		List<CheckGroup> checkGroupList = checkGroupService.findAll();
+		if(checkGroupList != null && checkGroupList.size() > 0) {
+			return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,checkGroupList);
+		}
+		return new Result(false,MessageConstant.QUERY_CHECKGROUP_FAIL);
 	}
 
 	

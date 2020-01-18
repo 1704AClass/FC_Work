@@ -16,7 +16,7 @@ import com.fuceng.Bean.CheckGroup;
 public interface CheckGroupMapper {
 
 	@Insert("insert into t_checkgroup(code,name,sex,helpCode,remark,attention) values(#{code},#{name},#{sex},#{helpCode},#{remark},#{attention})")
-	@Options(useGeneratedKeys=true, keyProperty="id", keyColumn="id")
+	@Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
 	void add(CheckGroup checkGroup);
 
 	@Insert("insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id) values(#{checkgroup_id},#{checkitem_id})")
@@ -42,6 +42,9 @@ public interface CheckGroupMapper {
 
 	@Delete("delete from t_checkgroup where id = #{id}")
 	void delete(@Param("id")Integer id);
+
+	@Select("select * from t_checkgroup")
+	List<CheckGroup> findAll();
 
 	
 	

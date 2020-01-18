@@ -10,6 +10,7 @@
   	<module>health_server_provider</module>
   	<module>health_backend</module>
   	<module>health_mobile</module>
+  	<module>health_jobs</module>
   </modules>
 <!-- 集中定义依赖版本号 -->
 	<properties>
@@ -245,7 +246,12 @@
 				<groupId>com.qiniu</groupId>
 				<artifactId>qiniu-java-sdk</artifactId>	
 				<version>${qiniu.version}</version>	
-			</dependency> 
+			</dependency>
+			<dependency>
+		 		<groupId>com.aliyun.oss</groupId>
+		 		<artifactId>aliyun-sdk-oss</artifactId>
+		 		<version>3.5.0</version>
+		 	</dependency> 
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi-ooxml</artifactId>

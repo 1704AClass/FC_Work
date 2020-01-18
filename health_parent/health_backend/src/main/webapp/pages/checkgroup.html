@@ -339,9 +339,10 @@
                 	this.checkitemIds=[];
                 	//发送axios请求
                 	axios.get("/checkitem/findAll.do").then((req) => {
+                		console.log(req);
                 		if(req.data.flag){
                 			//将检查项列表数据赋值给模型数据用于页面表格展示
-                			this.tableDate = req.data.data;
+                			this.tableData = req.data.date;
                 		}else{
                 			this.$message.error(req.data.message);
                 		}
@@ -354,7 +355,6 @@
                 		console.log(req);
                 		if(req.data.flag){
                 			//弹出编辑窗口
-                			alert("1")
                 			this.dialogFormVisible4Edit = true;
                 			//默认切换到第一个标签页 first second
                         	this.activeName="first";
