@@ -1,3 +1,4 @@
 com\fuceng\controller\CheckGroupController.class
+com\fuceng\controller\OrderSettingController.class
 com\fuceng\controller\SetmealController.class
 com\fuceng\controller\CheckItemController.class

@@ -246,12 +246,7 @@
 				<groupId>com.qiniu</groupId>
 				<artifactId>qiniu-java-sdk</artifactId>	
 				<version>${qiniu.version}</version>	
-			</dependency>
-			<dependency>
-		 		<groupId>com.aliyun.oss</groupId>
-		 		<artifactId>aliyun-sdk-oss</artifactId>
-		 		<version>3.5.0</version>
-		 	</dependency> 
+			</dependency> 
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi-ooxml</artifactId>
@@ -315,6 +310,8 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
