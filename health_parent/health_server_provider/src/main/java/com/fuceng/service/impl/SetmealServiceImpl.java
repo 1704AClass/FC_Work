@@ -63,6 +63,18 @@ public class SetmealServiceImpl implements SetmealService{
 		}
 		return new PageResult(Long.parseLong(total+""), rows);
 	}
+
+	@Override
+	public List<Setmeal> findAll() {
+		// TODO Auto-generated method stub
+		return setmealMapper.findAll();
+	}
+
+	@Override
+	public Setmeal findById(int id) {
+		// TODO Auto-generated method stub
+		return setmealMapper.findById(id);
+	}
 	
 	
 }

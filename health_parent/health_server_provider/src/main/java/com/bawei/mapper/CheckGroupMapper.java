@@ -46,8 +46,8 @@ public interface CheckGroupMapper {
 	@Select("select * from t_checkgroup")
 	List<CheckGroup> findAll();
 
-	
-	
+	@Select("select * from t_checkgroup where id in (select checkgroup_id from t_setmeal_checkgroup where setmeal_id = #{id})")
+	List<CheckGroup> findCheckGroupById(@Param("id")Integer id);
 	
 	
 	

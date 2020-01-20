@@ -26,4 +26,10 @@ public interface SetmealMapper {
 	@Select("select * from t_setmeal where code like concat('%',#{queryString},'%') or name like concat('%',#{queryString},'%') or helpCode like concat('%',#{queryString},'%') limit #{currentPage},#{pageSize}")
 	List<Setmeal> selectByCondition(@Param("currentPage")Integer currentPage,@Param("pageSize") Integer pageSize,@Param("queryString") String queryString);
 
+	@Select("select * from t_setmeal")
+	List<Setmeal> findAll();
+
+	@Select("select * from t_setmeal where id = #{id}")
+	Setmeal findById(@Param("id")int id);
+
 }

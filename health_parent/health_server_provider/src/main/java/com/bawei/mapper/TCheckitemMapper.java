@@ -32,5 +32,11 @@ public interface TCheckitemMapper {
 	@Select("select * from t_checkitem")
 	List<CheckItem> findAll();
 	
+	@Select("select * from t_checkitem where id in (select checkitem_id from t_checkgroup_checkitem where checkgroup_id = #{id})")
+	List<CheckItem> findCheckItemById(@Param("id")Integer id);
+	
+	
+	
+	
 	
 }
