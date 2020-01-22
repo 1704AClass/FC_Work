@@ -2,7 +2,10 @@ com\fuceng\service\impl\CheckGroupServiceImpl.class
 com\bawei\mapper\TCheckitemMapper.class
 com\bawei\mapper\OrderSettingMapper.class
 com\bawei\mapper\SetmealMapper.class
+com\bawei\mapper\MemberMapper.class
 com\fuceng\service\impl\OrderSettingServiceImpl.class
+com\bawei\mapper\OrderMapper.class
 com\bawei\mapper\CheckGroupMapper.class
+com\fuceng\service\impl\OrderServiceImpl.class
 com\fuceng\service\impl\CheckItemServiceImpl.class
 com\fuceng\service\impl\SetmealServiceImpl.class
