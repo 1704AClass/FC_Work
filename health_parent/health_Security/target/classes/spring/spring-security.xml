@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.fuceng.controller"></context:component-scan>
+	<security:global-method-security pre-post-annotations="enabledsss"></security:global-method-security>
+	
+
+
+	<security:http security="none" pattern="/pages/a.html" />
+	<security:http security="none" pattern="/login.html" />
+	<security:http security="none" pattern="/pages/b.html" />
+	<security:http security="none" pattern="/pages/**.html" />
+	
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	
+	<security:form-login login-page="/login.html"
+		username-parameter="username" password-parameter="password"
+		login-processing-url="/login.do" default-target-url="index.html"
+		authentication-failure-url="/login.htmml"
+	/>
+	
+	<security:logout
+		logout-url="/logout.do" logout-success-url="/login.html"
+		invalidate-session="true"
+	/>
+	
+	<security:csrf disabled="true"></security:csrf>
+	
+	<security:intercept-url pattern="/index.jsp" access="isAuthenticated()"/>
+	<security:intercept-url pattern="/a.html" access="isAuthenticated()"/>
+	<security:intercept-url pattern="/b.html" access="isAuthenticated('add')"/>
+	<security:intercept-url pattern="/c.html" access="isAuthenticated('ROLE_ADMIN')"/>
+	<security:intercept-url pattern="/d.html" access="isAuthenticated('ADMIN')"/>
+	
+</beans:beans>

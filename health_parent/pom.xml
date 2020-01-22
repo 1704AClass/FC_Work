@@ -11,6 +11,7 @@
   	<module>health_backend</module>
   	<module>health_mobile</module>
   	<module>health_jobs</module>
+  	<module>health_Security</module>
   </modules>
 <!-- 集中定义依赖版本号 -->
 	<properties>

@@ -40,6 +40,25 @@ public class ValidateCodeController {
 				,5 * 60 , code.toString());
 		return new Result(true,MessageConstant.SEND_VALIDATECODE_SUCCSS);
 	}
+
+	
+	@RequestMapping("/send4Login")
+	public Result send4Login(String telephone) {
+		Integer code = ValidateCodeUtils.generateValidateCode(4);
+		try {
+			//发送短信
+			MessageTestUtil.getMessagesUtil(telephone,code);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result(false,MessageConstant.SEND_VALIDATECODE_FAIL);
+			// TODO: handle exception
+		}
+		System.out.println("发送的手机验证码是:"+code);
+		//将生成的验证码缓存到redis
+		jedisPool.getResource().setex(telephone + RedisMessageConstant.SENDTYPE_LOGIN
+				,5 * 60 , code.toString());
+		return new Result(true,MessageConstant.SEND_VALIDATECODE_SUCCSS);
+	}
 	
 	
 	
