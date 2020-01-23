@@ -5,20 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.formula.ptg.TblPtg;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.fuceng.Bean.CheckItem;
-import com.fuceng.Bean.User;
 import com.fuceng.Interface.CheckItemService;
 import com.fuceng.util.MessageConstant;
-import com.fuceng.util.PageUtils;
 import com.fuceng.util.QueryPageBean;
 import com.fuceng.util.Result;
 

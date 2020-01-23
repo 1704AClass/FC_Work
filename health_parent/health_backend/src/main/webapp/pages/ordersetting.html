@@ -249,6 +249,7 @@
                     ];
                     //发送ajax请求，根据当前页面对应的月份查询愉悦设置
                     axios.post("/ordersetting/getOrderSettingByMonth.do?date="+this.currentYear+'-'+this.currentMonth).then((req) => {
+                    	console.log(req);
                     	if(req.data.flag){
                     		//为模型数据赋值，通过双向绑定展示到日历中
                     		this.leftobj = req.data.date;

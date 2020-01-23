@@ -1,3 +1,4 @@
 com\fuceng\controller\ValidateCodeController.class
+com\fuceng\controller\MemberController.class
 com\fuceng\controller\OrderController.class
 com\fuceng\controller\SetmealController.class

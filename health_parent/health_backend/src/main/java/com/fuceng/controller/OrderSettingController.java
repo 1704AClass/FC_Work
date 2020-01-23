@@ -47,7 +47,7 @@ public class OrderSettingController {
 	}
 	
 	
-	@RequestMapping("getOrderSettingByMonth")
+	@RequestMapping("/getOrderSettingByMonth")
 	public Result getOrderSettingByMonth(String date) {
 		System.out.println(date);
 		try {
@@ -63,7 +63,7 @@ public class OrderSettingController {
 	}
 	
 	
-	@RequestMapping("editNumberByDate")
+	@RequestMapping("/editNumberByDate")
 	public Result editNumberByDate(@RequestBody OrderSetting orderSetting) {
 		System.out.println(orderSetting);
 		try {

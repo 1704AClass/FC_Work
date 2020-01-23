@@ -1,5 +1,8 @@
 package com.fuceng.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.alibaba.dubbo.config.annotation.Service;
@@ -29,6 +32,19 @@ public class MemberServiceImpl implements MemberService{
 			member.setPassword(MD5Utils.md5(member.getPassword()));
 		}
 		memberMapper.add(member);
+	}
+
+	@Override
+	public List<Integer> findMemberCountByMonth(List<String> list) {
+		// TODO Auto-generated method stub
+		List<Integer> arrayList = new ArrayList<>();
+		for (String m : list) {
+			m = m + ".31";
+			Integer count = memberMapper.findMemberCountBeforeDate(m);
+			arrayList.add(count);
+		}
+		
+		return arrayList;
 	}
 
 	

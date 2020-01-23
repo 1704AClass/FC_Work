@@ -1,0 +1,15 @@
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:14 +0800] "GET /pages/orderInfo.html?id=13 HTTP/1.1" 304 - http-bio-9102-exec-1 42
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:14 +0800] "GET /img/undefined HTTP/1.1" 404 977 http-bio-9102-exec-2 9
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:14 +0800] "GET /img/asset-favico.ico HTTP/1.1" 200 4286 http-bio-9102-exec-4 5
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:19 +0800] "GET /pages/setmeal.html HTTP/1.1" 304 - http-bio-9102-exec-7 4
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:19 +0800] "GET /img/asset-favico.ico HTTP/1.1" 200 4286 http-bio-9102-exec-9 1
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:30 +0800] "POST /setmeal/findById.do?id=13 HTTP/1.1" 200 523 http-bio-9102-exec-5 14321
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:30 +0800] "POST /setmeal/getSetmeal.do HTTP/1.1" 200 1600 http-bio-9102-exec-8 11554
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:30 +0800] "POST /setmeal/findById.do?id=13 HTTP/1.1" 200 523 http-bio-9102-exec-3 15719
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:30 +0800] "POST /setmeal/getSetmeal.do HTTP/1.1" 200 1600 http-bio-9102-exec-6 12256
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:31 +0800] "GET /pages/setmeal.html HTTP/1.1" 304 - http-bio-9102-exec-5 2
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:31 +0800] "GET /img/asset-favico.ico HTTP/1.1" 200 4286 http-bio-9102-exec-10 1
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:31 +0800] "POST /setmeal/getSetmeal.do HTTP/1.1" 200 1600 http-bio-9102-exec-5 8
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:32 +0800] "POST /setmeal/findById.do?id=13 HTTP/1.1" 200 523 http-bio-9102-exec-5 9
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:34 +0800] "GET /img/undefined HTTP/1.1" 404 977 http-bio-9102-exec-5 2
+0:0:0:0:0:0:0:1 - - [23/Jan/2020:20:26:34 +0800] "POST /setmeal/findById.do?id=13 HTTP/1.1" 200 523 http-bio-9102-exec-10 11
