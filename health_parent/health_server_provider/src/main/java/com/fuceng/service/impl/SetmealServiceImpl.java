@@ -75,6 +75,12 @@ public class SetmealServiceImpl implements SetmealService{
 		// TODO Auto-generated method stub
 		return setmealMapper.findById(id);
 	}
+
+	@Override
+	public List<Map<String, Object>> findSetmealCount() {
+		// TODO Auto-generated method stub
+		return setmealMapper.findSetmealCount();
+	}
 	
 	
 }

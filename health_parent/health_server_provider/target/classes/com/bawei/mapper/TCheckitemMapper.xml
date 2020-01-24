@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bawei.mapper.TCheckitemMapper">
+	
+	<select id="getCount" resultType="int" >
+		select count(*) from t_checkitem
+		<where>
+			<if test="code != null and code != ''">
+				code like concat('%',#{queryString},'%')
+			</if>
+			<if test="name != null and code != ''">
+				or name like concat('%',#{queryString},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="findAllUserPage" resultMap="com.fuceng.Bean.CheckItem">
+		select * from t_checkitem 
+		<where>
+			<if test="code != null and code != ''">
+				code like concat('%',#{queryString},'%')
+			</if>
+			<if test="name != null and code != ''">
+				or name like concat('%',#{queryString},'%')
+			</if>
+		</where>
+		limit #{startIndex},#{pageSize}
+	</select>
+	
+	<insert id="add">
+		insert into t_checkitem values(#{id},#{code},#{name},#{sex},#{age},#{price},#{type},#{attention},#{remark})
+	</insert>
+
+	<update id="update">
+		update t_checkitem code = #{code},name=#{name},sex=#{sex},age=#{age},price=#{price},type=#{type},attention=#{attention},remark=#{remark} where id =#{id}
+	</update>
+	
+	<select id="findCountByCheckItemId" resultType="Long">
+		select count(*) from t_checkitem where id = #{id}
+	</select>
+
+	<select id="findById" resultType="com.fuceng.Bean.CheckItem">
+		select * from t_checkitem where id = #{id}
+	</select>
+
+	<select id="findAll" resultType="com.fuceng.Bean.CheckItem">
+		select * from t_checkitem
+	</select>
+	
+	<delete id="delete">
+		delete from t_checkitem where id = #{id}
+	</delete>
+	
+</mapper>
