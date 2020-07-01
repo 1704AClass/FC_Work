@@ -37,7 +37,7 @@
 		<ik.version>2012_u6</ik.version>		
 		<jedis.version>2.7.0</jedis.version>		
 		<qiniu.version>7.2.0</qiniu.version>		
-		<quartz.version>2.2.1</quartz.version>		
+		<quartz.version>2.3.2</quartz.version>		
 	</properties>
 	
 	<dependencyManagement>
