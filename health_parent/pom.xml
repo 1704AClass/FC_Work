@@ -32,7 +32,7 @@
 		<activemq.version>5.11.2</activemq.version>
 		<security.version>3.2.3.RELEASE</security.version>		
 		<solrj.version>4.10.3</solrj.version>
-		<poi.version>3.14</poi.version>
+		<poi.version>4.1.2</poi.version>
 		<jersey.version>1.18.1</jersey.version>		
 		<ik.version>2012_u6</ik.version>		
 		<jedis.version>2.7.0</jedis.version>		
